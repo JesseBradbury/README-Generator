@@ -4,9 +4,58 @@ const fs = require('fs');
 const generateMarkdown = require('./utils/generateMarkdown');
 // TODO: Create an array of questions for user input
 const questions = [
-    "What is the title of your project?",
-    "Write a description for your project: ",
-
+    {
+        type: "input",
+        name: "title",
+        message: "What is your project title?",
+    },
+    {
+        type: "input",
+        name: "description",
+        message: "Write your projects description: ",
+    },
+    {
+        type: "input",
+        name: "instalation",
+        message: "Write your projects instalation instructions: ",
+    },
+    {
+        type: "input",
+        name: "usage",
+        message: "Write your projects usage information: ",
+    },
+    {
+        type: "input",
+        name: "screenshot",
+        message: "What is the file name of the screenshot in your assets/images folder? (example: screenshot.png) ",
+    },
+    {
+        type: "input",
+        name: "contribution",
+        message: "Write your projects contributing guidelines: ",
+    },
+    {
+        type: "input",
+        name: "test",
+        message: "Write your projects test instructions: ",
+    },
+    {
+        type: "list",
+        name: "license",
+        message: "Select a license to use: ",
+        choices: ["MIT", "Apache", "GNU General Public", "ISC", new inquirer.Separator(), "NONE"]
+    },
+    // TODO: Add questions about github and email for the "Questions" section. 
+    {
+        type: "input",
+        name: "gitHub",
+        message: "Provide your GitHub user name: ",
+    },
+    {
+        type: "input",
+        name: "email",
+        message: "Provide your E-Mail: ",
+    },
 ];
 
 // TODO: Create a function to write README file
@@ -43,50 +92,7 @@ function writeToFile(fileName, data) {
 
 function init() {
     inquirer
-        .prompt([
-            {
-                type: "input",
-                message: "What is your project title?",
-                name: "title",
-            },
-            {
-                type: "input",
-                message: "Write your projects description: ",
-                name: "description",
-            },
-            {
-                type: "input",
-                message: "Write your projects instalation instructions: ",
-                name: "instalation",
-            },
-            {
-                type: "input",
-                message: "Write your projects usage information: ",
-                name: "usage",
-            },
-            {
-                type: "input",
-                message: "What is the file name of the screenshot in your assets/images folder? (example: screenshot.png) ",
-                name: "screenshot",
-            },
-            {
-                type: "input",
-                message: "Write your projects contributing guidelines: ",
-                name: "contribution",
-            },
-            {
-                type: "input",
-                message: "Write your projects test instructions: ",
-                name: "test",
-            },
-            {
-                type: "list",
-                message: "Select a license to use: ",
-                name: "license",
-                choices: ["MIT", "Choice2", "Choice3", new inquirer.Separator(), "NONE"]
-            },
-
-        ])
+        .prompt(questions)
         .then((response) => {
             const fileName = "README.md";
             writeToFile(fileName, response)

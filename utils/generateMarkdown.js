@@ -4,15 +4,39 @@ function renderLicenseBadge(license) { }
 
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
-function renderLicenseLink(license) { }
+let licenseLink = "";
 
+function renderLicenseLink(license) {
+  const licenseURLs = {
+    "MIT": "https://opensource.org/license/mit/",
+    "Apache": "https://www.apache.org/licenses/",
+    "GNU General Public": "https://www.gnu.org/licenses/gpl-3.0.en.html",
+    "ISC": "https://opensource.org/license/isc-license-txt/",
+    "NONE": "",
+  };
+
+  licenseLink = licenseURLs[license] || "";
+  // return licenseURLs[license] || '';
+}
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
-function renderLicenseSection(license) { }
+
+function renderLicenseSection(license) {
+  // const licenseLink = renderLicenseLink(license);
+
+  if (licenseLink) {
+    return `-[${license}](${licenseLink})`
+  } else {
+    return "";
+  }
+}
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
-  return `# ${data.title}
+  renderLicenseLink(data.license)
+  const licenseSection = renderLicenseSection(data.license);
+
+  return `# ${data.title} · LICENSE BADGE
   
   ## Description:
   ${data.description}
@@ -36,7 +60,11 @@ function generateMarkdown(data) {
   ${data.credits}
 
   ## License:
-  ${data.license}
+  ${licenseSection || ""} 
+
+  ## Questions
+  Find me on [GitHub](https://github.com/${data.gitHub})
+  Send me an E-Mail at [${data.email}](mailto:${data.email})
 
   ### Thank You!
   `;
