@@ -1,8 +1,9 @@
 #  README Generator   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
   
 ## Description:
-This is a command line README generator created using NodeJS. By running the "node index.js" command. The app will prompt you for each section in a high-quality README.md file that can be used for sharing your work. ([Example of Professional README](https://coding-boot-camp.github.io/full-stack/github/professional-readme-guide))
-I created this as a practice project for command line apps and NodeJS. 
+This is a command line README generator created using NodeJS. Run the "node index.js" command, the app will prompt you for the details to include for each section in a high-quality README.md file. ([Example of Professional README](https://coding-boot-camp.github.io/full-stack/github/professional-readme-guide))
+
+I created this as a practice project for creating command line apps and NodeJS. 
 
 This app also prompts you for the file name of a screenshot for your project to include in the Usage section. Your screen shot must be in a assets/images directory, if it is not feel free to adjust the markdown file after it is created. 
 
