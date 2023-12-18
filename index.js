@@ -31,7 +31,7 @@ const questions = [
     },
     {
         type: "input",
-        name: "contribution",
+        name: "credits",
         message: "Write your projects contributing guidelines: ",
     },
     {
